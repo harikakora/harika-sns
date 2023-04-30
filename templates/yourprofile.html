@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0e90b33da2.js" crossorigin="anonymous"></script>
+
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+            background-color: black;
+            color: white;
+        }
+        .top-head{
+            display: flex;
+            margin-bottom: 40px;
+        }
+        .top-head > a{
+            margin-top: 30px;
+            margin-left: 60px ;
+        }
+        .name{
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top:20px ;
+            margin-left:2px;
+            color: white;
+        }
+        /*table{
+            width: 400px;
+            font-size: 20px;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-left: 90%;
+        }
+        td{
+            border: 1px solid gainsboro;
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }*/
+        .main{
+            width: 100%;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            /*margin-top: ;*/
+            
+        }
+        .wrapper{
+            width:90%;
+            /*margin-top: ;*/
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            grid-gap:30px;
+        }
+        .left-col{
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .post{
+            margin-top: 10px;
+            width: 500px;
+            
+            background: black;
+            padding:  15px 0;
+            margin-left: 270px;
+            border-radius: 5px;
+            border: 1px solid gainsboro;
+            /*margin-top: ;*/
+        }
+        .info{
+            width: 100%;
+            height: 60px ;
+            display: flex;
+            padding: 0 20px;
+        }
+        .profile-pic{
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .info .username{
+             width: auto;
+             font-weight: bold;
+             color: black;
+             font-size: 14px;
+             margin-left: 10px;
+             margin-top: 10px;
+        }
+        .info .options{
+            height: 10px;
+            cursor: pointer;
+    
+        }
+        .info .user{
+            display: flex;
+            align-items: center;
+        }
+        .info .profile-pic{
+            height: 40px;
+            width: 40px;
+            padding: 0;
+        }
+        .post-img{
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .description{
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: bold;
+        }
+        .description span{
+            font-weight: lighter;
+        }
+        .post-time{
+            color: black;
+            font-size: 12px;
+        }.reaction-wrapper{
+            width: 100%;
+            height: 50px;
+            display: flex;
+            margin-top: -20px;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    
+    <div class="container">
+        <div class="row">
+            
+            <div class="top-head">               
+                        <a href="#"><i class="fa-regular fa-circle-user" id="go" style="color: white; font-size: 80px;"></i></a>
+                        <a href="#"><h2 class="name">{{session.get('user')}}</h2></a>
+                        <div style="margin-left:500px; margin-top: 50px;" class="d-flex justify-content-end">
+                            <a href="{{url_for('homepage')}}"><i class="fa-solid fa-house" style="font-size: 30px; color: white; "></i></a>
+                            <a href="{{url_for('createpost')}}"><i class="fa-regular fa-square-plus" style="font-size: 32px; margin-left: 20px; color: white;"></i></a>
+                            <a href="{{url_for('logout')}}"><i class="fa-solid fa-right-from-bracket" style="font-size: 32px; margin-left: 100px; color: white;"></i></a>
+                        </div>
+            </div>
+            
+            <!--<div class="head-next" class="d-flex justify-content-center">
+                <table cellpadding="10px">
+                    <tr>
+                        <td>username <i class="fa-solid fa-ellipsis-vertical" style="margin-left: 270px; color: white;"></i></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 150px;">image or content</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa-regular fa-heart" style="margin-left: 320px;"></i><i class="fa-regular fa-share-from-square" style="margin-left: 5px;"></i><br>name + caption</td>
+                    </tr>
+                </table>  
+            </div>-->
+            
+            <div class="d-flex justify-content-center">
+                <section class="main">
+                    <div class="wrapper">
+                        <div class="left-col">
+                            {% for i in data %}
+                            <div class="post">
+                                <div class="info">
+                                    <div class="user">
+                                        <div class="profile-pic">
+                                            <!--<i style=" font-size: 50px; color: white;" class="fa-regular fa-circle-user" id="go"></i>-->
+                                            <p class="username" style="color: white; font-size: 20px;">{{i[1]}}</p>
+                                            <!--<div class="dropdown">
+                                                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: white; font-size: 25px; margin-left: 270px;">
+                                                    <i id="options" class="fa-solid fa-ellipsis-vertical" ></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                  <a class="dropdown-item" href="#">Delete</a>
+                                                </div>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="{{url_for('static',filename=i[0]+'.jpg')}}" class="post-img" alt="">
+                                <div class="post-content" style="width: 100%; padding: 20px;">
+                                    <div class="reaction-wrapper">
+                                        <a href="https://api.whatsapp.com/send?text={{url_for('page',pid=i[0],_external=True)}}"><i class="fa-regular fa-share-from-square" style="height: 25px;color: white; margin: 0; margin-left: 400px; font-size: 25px;"></i></a>
+                                        <a href="{{url_for('deletepost',pid=i[0])}}"><i class="fa-solid fa-trash" style="color: white; font-size: 22px; margin-left: 10px;"></i></a>
+                                    </div>
+                                    <!--<p class="likes" style="color: white;">1,012 likes</p>-->
+                                    <p class="description" style="color: white;">{{i[1]}}<span style="color: #dfdfdf; margin-left: 10px;">{{i[3]}}</span></p>
+                                    <p class="post-time" style="color: white; font-size: 12px;">{{i[4]}}</p>
+                                </div>
+                                <!--<div class="comment-wrapper">
+                                    <i style="margin-bottom: 30px; height: 30px; font-size: 30px; margin-left: 15px; color: white;" class="fa-regular fa-face-smile" id="icon"></i>
+                                    <input type="text" class="comment-box" placeholder="Add a comment" >
+                                    <button class="comment-btn">Post</button>
+                                </div>-->
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>           
+                </section>
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+</html>

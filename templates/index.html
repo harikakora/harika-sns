@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0e90b33da2.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+        }
+        body{
+          background-color: black;
+        }
+        .container{
+            position: relative;
+            height: 100vh;
+        }
+        .animated-title {
+            color: white;
+            font-family: Roboto, Arial, sans-serif;
+            height: 90vmin;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vmin;
+            }
+            .animated-title > div {
+            height: 50%;
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            }
+
+            .animated-title > div.text-top {
+            border-bottom: 1vmin solid red;
+            top: 0;
+            }
+
+            .animated-title > div.text-bottom {
+            bottom: 0;
+            }
+            @keyframes showTopText {
+            0% { transform: translate3d(0, 100%, 0); }
+            40%, 60% { transform: translate3d(0, 50%, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+            }
+
+            @keyframes showBottomText {
+            0% { transform: translate3d(0, -100%, 0); }
+            100% { transform: translate3d(0, 0, 0); }
+            }
+            .animated-title > div div {
+            font-size: 7vmin; /* for demo purposes */
+            padding: 2vmin 0;
+            position: absolute;
+            }
+
+            .animated-title > div.text-top div {
+            animation: showTopText 1s;
+            animation-delay: 0.5s;
+            animation-fill-mode: forwards;
+            bottom: 0;
+            transform: translate(0, 100%);
+            }
+
+            .animated-title > div.text-bottom div {
+            animation: showBottomText 2s;
+            animation-delay: 1.75s;
+            animation-fill-mode: forwards;
+            top: 0;
+            transform: translate(0, -100%);
+            }
+            .animated-title > div div span {
+            display: block;
+            }
+            .animated-title > div.text-top div span:first-child {
+            color: #767676;
+            }
+            /*.navimage{
+                width: 70px;
+                height: 70px;
+            }*/
+            #go{
+                color: aliceblue;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 25px;
+                margin-right: 30px;
+            }
+            #go:hover{
+                color: red;
+                text-decoration: none;
+           }
+           .secondhome{
+            background-color: black;
+           }
+           .navbar-brand{
+                text-decoration: none;
+                font-size: 40px;
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left: 30px;
+          }  
+            .screen-one{
+              background-color: black;
+              
+            }
+            .screen-two{
+              background-color: black;
+              
+            }
+            .contact{
+              background-color:black ;
+              padding: 5%;
+            }
+
+           
+    </style>
+</head>
+<body>
+      <div class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <a class="navbar-brand" href="#" style="color: red; font-weight: bold;">BLOG<span style="color: white;">CROLL</span><!--<img src="https://res.cloudinary.com/dekelvtbz/image/upload/v1681639126/imges/siddlogo_qapxln.png" alt="logo" class="navimage"/>--></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ml-auto">
+                    <a href="#" class="nav_link" id="go">Home</a>
+                    <a href="#" class="nav_link" id="go">Contact us</a>
+                    <a href="{{url_for('signup')}}" class="nav_link" id="go">Sign up</a>
+                    <a href="{{url_for('login')}}" class="nav_link" id="go">Log in</a>
+                </div>
+            </div>      
+        </nav>
+      </div>
+      <div class="secondhome">
+        <div class="container">
+            <div class="animated-title">
+                <div class="text-top">
+                  <div>
+                    <span>Get your profile started here!</span>
+                    <span>BLOGCROLL</span>
+                  </div>
+                </div>
+                <div class="text-bottom">
+                  <div>Create! <br> Update! <br> Delete! </div>
+                </div>
+            </div>
+            
+        </div>
+      </div>
+      <center>
+        <div class="screen-one">
+          <img  style="height: 20%; width: 26%;" src="https://res.cloudinary.com/dekelvtbz/image/upload/v1682400653/TripDetail-32b7c_pkdjad.jpg" /><br><br>
+          <div class="matter-one">
+           <h1 style="color: white;">Create your <span style="color:red;">profile</span> on Blogcroll</h1><br>
+            <p style="color:grey; font-size:23px ;">Become one of more than <br> million accounts that people visit every day</p>
+          </div>
+         </div>
+        </center>
+        <center>
+        <div class="screen-two">
+          <img style="height:20%; width: 26%; margin-top:40px;" src="https://res.cloudinary.com/dekelvtbz/image/upload/v1682400581/Explore-23dd1_chuoyn.jpg"/><br><br>
+          <div class="matter-two">
+            <h1 style="color: white;"><span style="color: red;">Share</span> your post </h1><br>
+            <p style="color: grey; font-size: 23px;">People come to Blogcroll <br> to learn how to plan content with a consistent look</p>
+        </div>
+          
+  
+        </div>
+      </center>
+      <center>
+        <div class="contact">
+          <h1 style="font-size: 50px; color: orangered ;">CONTACT US</h1>
+          <p style="font-size: 20px;  color: white;"><i class="fa-solid fa-envelope" style="color:white; font-size: 30px; margin-right: 20px ; margin-top: 30px;"></i>blogcrollium@gmail.com</p>
+  
+        </div>
+      </center>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
